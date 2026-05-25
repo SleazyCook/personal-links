@@ -39,6 +39,8 @@
 }
 
 .name {
+  font-family: 'Julius Sans One', sans-serif;
+  letter-spacing: 0.0875em;
   font-size: 1.4rem;
   font-weight: 700;
   color: #ffffff;

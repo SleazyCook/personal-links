@@ -18,7 +18,7 @@ export default function App() {
         <div className={styles.avatar}>
           <img src="https://i.imgur.com/i5gnF20.jpg" alt="Drew Cook" />
         </div>
-        <h1 className={styles.name}>Developed by Drewford</h1>
+        <h1 className={styles.name}>developed by drewford</h1>
         <IconRow links={links} />
         <ExpandableBio>
           {bioContent}
