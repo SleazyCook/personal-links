@@ -4,46 +4,62 @@ import styles from "./PhotoWidget.module.css";
 const KB_CLASSES = [styles.kb0, styles.kb1, styles.kb2, styles.kb3];
 const FADE_MS = 800;
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function PhotoWidget({ images = [], interval = 4000 }) {
+  const [deck, setDeck] = useState(() => shuffle(images));
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState(null);
   const paused = useRef(false);
   const touchStartX = useRef(null);
   const kbStartRef = useRef(Date.now());
-  // Snapshot elapsed KB time at the moment a transition fires
   const kbElapsedRef = useRef(0);
+
+  // Re-shuffle and reset when the images prop changes (e.g. API load replaces fallback)
+  useEffect(() => {
+    setDeck(shuffle(images));
+    setCurrent(0);
+    setPrev(null);
+    kbStartRef.current = Date.now();
+  }, [images]);
 
   // Preload all images so they're in cache before advance() fires
   useEffect(() => {
-    images.forEach(({ src }) => {
+    deck.forEach(({ src }) => {
       const img = new Image();
       img.src = src;
     });
-  }, [images]);
+  }, [deck]);
 
   const advance = useCallback(
     (dir = 1) => {
-      // Capture how far into the Ken Burns animation the current image is
       kbElapsedRef.current = (Date.now() - kbStartRef.current) / 1000;
       kbStartRef.current = Date.now();
 
       setCurrent((c) => {
-        const next = (c + dir + images.length) % images.length;
+        const next = (c + dir + deck.length) % deck.length;
         setPrev(c);
         setTimeout(() => setPrev(null), FADE_MS + 100);
         return next;
       });
     },
-    [images.length]
+    [deck.length]
   );
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (deck.length <= 1) return;
     const id = setInterval(() => {
       if (!paused.current) advance();
     }, interval);
     return () => clearInterval(id);
-  }, [advance, images.length, interval]);
+  }, [advance, deck.length, interval]);
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -56,7 +72,7 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
     touchStartX.current = null;
   };
 
-  if (!images.length) return null;
+  if (!deck.length) return null;
 
   return (
     <div
@@ -66,14 +82,13 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       role="img"
-      aria-label={images[current].alt ?? "Photo slideshow"}
+      aria-label={deck[current].alt ?? "Photo slideshow"}
     >
       <div className={styles.frame}>
-        {/* Leaving image — negative animationDelay continues KB mid-stream */}
         {prev !== null && (
           <div key={`p${prev}`} className={`${styles.slide} ${styles.below}`}>
             <img
-              src={images[prev].src}
+              src={deck[prev].src}
               alt=""
               aria-hidden="true"
               className={`${styles.image} ${KB_CLASSES[prev % KB_CLASSES.length]}`}
@@ -83,11 +98,10 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
           </div>
         )}
 
-        {/* Entering image — KB restarts fresh via key, image already in cache */}
         <div key={`c${current}`} className={`${styles.slide} ${styles.above}`}>
           <img
-            src={images[current].src}
-            alt={images[current].alt ?? ""}
+            src={deck[current].src}
+            alt={deck[current].alt ?? ""}
             className={`${styles.image} ${KB_CLASSES[current % KB_CLASSES.length]}`}
             loading="eager"
           />
@@ -95,16 +109,6 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
 
         <div className={styles.overlay} aria-hidden="true" />
 
-        {images.length > 1 && (
-          <div className={styles.dots} aria-hidden="true">
-            {images.map((_, i) => (
-              <span
-                key={i}
-                className={`${styles.dot} ${i === current ? styles.dotActive : ""}`}
-              />
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
