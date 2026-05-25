@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/smugmug/*"
+  to = "https://api.smugmug.com/api/v2/:splat"
+  status = 200
+  force = true
