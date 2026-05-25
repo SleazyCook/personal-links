@@ -1,0 +1,118 @@
+/* ── Shell ───────────────────────────────────────────────── */
+
+.widget {
+  width: 100%;
+  border-radius: 22px;
+  /* Lift off the dark background like an iOS widget */
+  filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.65))
+          drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #111;
+  /* Subtle inner border for iOS widget edge feel */
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+}
+
+/* ── Slides ──────────────────────────────────────────────── */
+
+.slide {
+  position: absolute;
+  inset: 0;
+}
+
+.below {
+  z-index: 1;
+}
+
+.above {
+  z-index: 2;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* ── Ken Burns variants ──────────────────────────────────── */
+
+.kb0 { animation-name: kb0; }
+.kb1 { animation-name: kb1; }
+.kb2 { animation-name: kb2; }
+.kb3 { animation-name: kb3; }
+
+@keyframes kb0 {
+  from { transform: scale(1)    translate(0, 0); }
+  to   { transform: scale(1.08) translate(-1.5%, -1%); }
+}
+
+@keyframes kb1 {
+  from { transform: scale(1.07) translate(-2%, 1%); }
+  to   { transform: scale(1)    translate(1.5%, -1%); }
+}
+
+@keyframes kb2 {
+  from { transform: scale(1)    translate(2%, 0.5%); }
+  to   { transform: scale(1.07) translate(-1%, 1.5%); }
+}
+
+@keyframes kb3 {
+  from { transform: scale(1.06) translate(1%, 1%); }
+  to   { transform: scale(1)    translate(-1.5%, -0.5%); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Overlay & dots ──────────────────────────────────────── */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  /* Subtle vignette — adds depth without obscuring photo */
+  background:
+    linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.3) 100%),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  transition: background 0.35s ease, transform 0.35s ease;
+}
+
+.dotActive {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.4);
+}

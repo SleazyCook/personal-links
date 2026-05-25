@@ -10,10 +10,10 @@ const bioContent = (
     {" "}
     <InlineLink href="https://www.bldpwr.com">
       BLD PWR
-    </InlineLink>{" "}, {" "}
+    </InlineLink>, {" "}
     <InlineLink href="https://loudmuzik.com">
       L.O.U.D Muzik
-    </InlineLink>{" "}, and reggae artist{" "}
+    </InlineLink>, and reggae artist{" "}
     <InlineLink href="https://kristinealicia.com">
         Kristine Alicia</InlineLink>{" "}
     documenting concerts, behind-the-scenes studio sessions, and immersive cultural experiences
