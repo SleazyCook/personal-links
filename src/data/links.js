@@ -1,0 +1,68 @@
+const links = [
+  {
+    id: 1,
+    label: "Instagram",
+    href: "https://instagram.com",
+    img: "https://cdn.simpleicons.org/instagram/ffffff",
+    alt: "Instagram logo",
+    color: "#e1306c",
+  },
+  {
+    id: 2,
+    label: "SmugMug",
+    href: "https://smugmug.com",
+    img: "https://cdn.simpleicons.org/smugmug/ffffff",
+    alt: "SmugMug logo",
+    color: "#6db33f",
+  },
+  {
+    id: 3,
+    label: "TikTok",
+    href: "https://tiktok.com",
+    img: "https://cdn.simpleicons.org/tiktok/ffffff",
+    alt: "TikTok logo",
+    color: "#010101",
+  },
+  {
+    id: 4,
+    label: "Letterboxd",
+    href: "https://letterboxd.com",
+    img: "https://cdn.simpleicons.org/letterboxd/ffffff",
+    alt: "Letterboxd logo",
+    color: "#2c3440",
+  },
+  {
+    id: 5,
+    label: "Dev Portfolio",
+    href: "https://example.com",
+    img: "https://cdn.simpleicons.org/firefox/ffffff",
+    alt: "Dev portfolio website",
+    color: "#6366f1",
+  },
+  {
+    id: 6,
+    label: "GitHub",
+    href: "https://github.com",
+    img: "https://cdn.simpleicons.org/github/ffffff",
+    alt: "GitHub logo",
+    color: "#24292e",
+  },
+  {
+    id: 7,
+    label: "LinkedIn",
+    href: "https://linkedin.com",
+    img: "https://cdn.simpleicons.org/linkedin/ffffff",
+    alt: "LinkedIn logo",
+    color: "#0077b5",
+  },
+  {
+    id: 8,
+    label: "Email Me",
+    href: "mailto:you@example.com",
+    img: "https://cdn.simpleicons.org/gmail/ffffff",
+    alt: "Gmail logo",
+    color: "#ea4335",
+  },
+];
+
+export default links;
