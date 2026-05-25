@@ -23,7 +23,7 @@ export default function App() {
       </div>
       <footer className={styles.footer}>
         <a href="https://drewford.dev" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
-          Developed by Drewford
+          © 2026 Developed by Drewford
         </a>
       </footer>
     </main>
