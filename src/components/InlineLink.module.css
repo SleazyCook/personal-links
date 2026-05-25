@@ -1,0 +1,17 @@
+.inlineLink,
+.inlineLink:visited,
+.inlineLink:hover,
+.inlineLink:active,
+.inlineLink:focus {
+  color: inherit;
+}
+
+.inlineLink {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
