@@ -13,10 +13,12 @@ function shuffle(arr) {
   return a;
 }
 
-export default function PhotoWidget({ images = [], interval = 4000 }) {
+export default function PhotoWidget({ images = [], interval = 4000, loading = false }) {
   const [deck, setDeck] = useState(() => shuffle(images));
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState(null);
+  const [skeletonVisible, setSkeletonVisible] = useState(loading);
+  const [skeletonFading, setSkeletonFading] = useState(false);
   const paused = useRef(false);
   const touchStartX = useRef(null);
   const kbStartRef = useRef(Date.now());
@@ -30,6 +32,12 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
     setPrev(null);
     kbStartRef.current = Date.now();
   }, [images]);
+
+  useEffect(() => {
+    if (!loading && skeletonVisible) {
+      setSkeletonFading(true);
+    }
+  }, [loading, skeletonVisible]);
 
   // Preload all images so they're in cache before advance() fires
   useEffect(() => {
@@ -111,6 +119,13 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
 
         <div className={styles.overlay} aria-hidden="true" />
 
+        {skeletonVisible && (
+          <div
+            className={`${styles.skeleton} ${skeletonFading ? styles.skeletonOut : ""}`}
+            onTransitionEnd={() => setSkeletonVisible(false)}
+            aria-hidden="true"
+          />
+        )}
       </div>
     </div>
   );

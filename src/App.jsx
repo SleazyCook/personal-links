@@ -10,7 +10,7 @@ import links from "./data/links";
 import styles from "./styles/App.module.css";
 
 export default function App() {
-  const { photos } = useSmugMugPhotos(fallbackPhotos);
+  const { photos, loading } = useSmugMugPhotos(fallbackPhotos);
 
   return (
     <main className={styles.page}>
@@ -24,7 +24,7 @@ export default function App() {
           {bioContent}
         </ExpandableBio>
         <ActionBar />
-        <PhotoWidget images={photos} interval={4500} />
+        <PhotoWidget images={photos} interval={4500} loading={loading} />
         {/* <nav className={styles.links} aria-label="Social links">
           {links.map((link) => (
             <LinkButton key={link.id} {...link} />
