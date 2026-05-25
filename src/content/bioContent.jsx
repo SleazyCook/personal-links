@@ -6,11 +6,11 @@ const bioContent = (
     videographer who specializes in capturing the city&apos;s local music,
     hip-hop, and entertainment scene.
     <br />
-    He frequently collaborates with regional artists and organizations like
+    He frequently collaborates with regional artists and organizations like the nonprofit
     {" "}
     <InlineLink href="https://www.bldpwr.com">
       BLD PWR
-    </InlineLink>, {" "}
+    </InlineLink>, record label{" "}
     <InlineLink href="https://loudmuzik.com">
       L.O.U.D Muzik
     </InlineLink>, and reggae artist{" "}
@@ -19,7 +19,7 @@ const bioContent = (
     documenting concerts, behind-the-scenes studio sessions, and immersive cultural experiences
     at venues like the House of Blues, White Oak Music Hall, and the DeLuxe Theater.
     <br />
-    While Drewford is primarily active behind the camera, his work is heavily
+    While Drew is primarily active behind the camera, his work is heavily
     shared across platforms.
   </>
 );
