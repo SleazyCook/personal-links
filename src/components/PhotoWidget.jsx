@@ -21,6 +21,7 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
   const touchStartX = useRef(null);
   const kbStartRef = useRef(Date.now());
   const kbElapsedRef = useRef(0);
+  const transitionCount = useRef(0);
 
   // Re-shuffle and reset when the images prop changes (e.g. API load replaces fallback)
   useEffect(() => {
@@ -42,6 +43,7 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
     (dir = 1) => {
       kbElapsedRef.current = (Date.now() - kbStartRef.current) / 1000;
       kbStartRef.current = Date.now();
+      transitionCount.current += 1;
 
       setCurrent((c) => {
         const next = (c + dir + deck.length) % deck.length;
@@ -86,7 +88,7 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
     >
       <div className={styles.frame}>
         {prev !== null && (
-          <div key={`p${prev}`} className={`${styles.slide} ${styles.below}`}>
+          <div key={`p-${transitionCount.current}`} className={`${styles.slide} ${styles.below}`}>
             <img
               src={deck[prev].src}
               alt=""
@@ -98,7 +100,7 @@ export default function PhotoWidget({ images = [], interval = 4000 }) {
           </div>
         )}
 
-        <div key={`c${current}`} className={`${styles.slide} ${styles.above}`}>
+        <div key={`c-${transitionCount.current}`} className={`${styles.slide} ${styles.above}`}>
           <img
             src={deck[current].src}
             alt={deck[current].alt ?? ""}
