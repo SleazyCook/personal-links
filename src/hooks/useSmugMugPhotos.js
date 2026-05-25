@@ -21,7 +21,7 @@ async function fetchSmugMugPhotos(apiKey) {
   // Uses the local Netlify proxy rewrite to bypass CORS
   const nodeUrl = `/api/smugmug/node/${NODE_KEY}?${params()}`;
 
-  console.log("Fetching SmugMug node:", nodeUrl);
+  // console.log("Fetching SmugMug node:", nodeUrl);
 
   const nodeRes = await fetch(nodeUrl);
 
@@ -36,7 +36,7 @@ async function fetchSmugMugPhotos(apiKey) {
     throw new Error("Could not resolve album URI");
   }
 
-  console.log("Resolved album URI:", albumUri);
+  // console.log("Resolved album URI:", albumUri);
 
   // STEP 2: Fetch album images
   // We strip '/api/v2/' from the returned albumUri because our Netlify proxy 
@@ -47,7 +47,7 @@ async function fetchSmugMugPhotos(apiKey) {
     _expand: "ImageSizes"
   })}`;
 
-  console.log("Fetching album images:", imagesUrl);
+  // console.log("Fetching album images:", imagesUrl);
 
   const imagesRes = await fetch(imagesUrl);
 
@@ -57,7 +57,7 @@ async function fetchSmugMugPhotos(apiKey) {
 
   const imagesData = await imagesRes.json();
 
-  console.log("SmugMug images response:", imagesData);
+  // console.log("SmugMug images response:", imagesData);
 
   const albumImages = imagesData.Response?.AlbumImage ?? [];
 

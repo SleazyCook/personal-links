@@ -31,14 +31,14 @@ const links = [
     alt: "Letterboxd logo",
     color: "#2c3440",
   },
-  {
-    id: 5,
-    label: "Dev Portfolio",
-    href: "https://drewford.dev",
-    img: "https://cdn.simpleicons.org/firefox/ffffff",
-    alt: "Dev portfolio website",
-    color: "#6366f1",
-  },
+  // {
+  //   id: 5,
+  //   label: "Dev Portfolio",
+  //   href: "https://drewford.dev",
+  //   img: "https://cdn.simpleicons.org/firefox/ffffff",
+  //   alt: "Dev portfolio website",
+  //   color: "#6366f1",
+  // },
   {
     id: 6,
     label: "GitHub",
@@ -51,18 +51,18 @@ const links = [
     id: 7,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/developedbydrewford/",
-    img: "https://cdn.simpleicons.org/linkedin/ffffff",
+    img: "https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg",
     alt: "LinkedIn logo",
-    color: "#0077b5",
+    color: "#0077B5",
   },
-  {
-    id: 8,
-    label: "Email Me",
-    href: "mailto:andrewjcook93@gmail.com",
-    img: "https://cdn.simpleicons.org/gmail/ffffff",
-    alt: "Gmail logo",
-    color: "#ea4335",
-  },
+  // {
+  //   id: 8,
+  //   label: "Email Me",
+  //   href: "mailto:andrewjcook93@gmail.com",
+  //   img: "https://cdn.simpleicons.org/gmail/ffffff",
+  //   alt: "Gmail logo",
+  //   color: "#ea4335",
+  // },
 ];
 
 export default links;

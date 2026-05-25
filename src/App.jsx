@@ -35,17 +35,17 @@ export default function App() {
         <div className={styles.avatar}>
           <img src="https://i.imgur.com/i5gnF20.jpg" alt="Drew Cook" />
         </div>
-        <h1 className={styles.name}>Developed by Drewford</h1>
         <IconRow links={links} />
+        <h1 className={styles.name}>Developed by Drewford</h1>
         <ExpandableBio>
           {bioContent}
         </ExpandableBio>
         <PhotoWidget images={photos} interval={4500} />
-        <nav className={styles.links} aria-label="Social links">
+        {/* <nav className={styles.links} aria-label="Social links">
           {links.map((link) => (
             <LinkButton key={link.id} {...link} />
           ))}
-        </nav>
+        </nav> */}
       </div>
       <footer className={styles.footer}>
         <a href="https://drewford.dev" target="_blank" rel="noopener noreferrer" className={styles.footerLink}>
