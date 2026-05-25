@@ -1,6 +1,7 @@
 // import LinkButton from "./components/LinkButton";
 import IconRow from "./components/IconRow";
 import ExpandableBio from "./components/ExpandableBio";
+import ActionBar from "./components/ActionBar";
 import PhotoWidget from "./components/PhotoWidget";
 import { useSmugMugPhotos } from "./hooks/useSmugMugPhotos";
 import bioContent from "./content/bioContent";
@@ -40,6 +41,7 @@ export default function App() {
         <ExpandableBio>
           {bioContent}
         </ExpandableBio>
+        <ActionBar />
         <PhotoWidget images={photos} interval={4500} />
         {/* <nav className={styles.links} aria-label="Social links">
           {links.map((link) => (

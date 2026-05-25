@@ -1,0 +1,208 @@
+/* ── Button row ──────────────────────────────────────────── */
+
+.row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.btn {
+  flex: 1;
+  padding: 13px 0;
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  background: #141414;
+  transform: translateY(0);
+}
+
+/* ── Modal overlay ───────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  animation: overlayIn 0.22s ease forwards;
+}
+
+.overlayOut {
+  animation: overlayOut 0.22s ease forwards;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal {
+  position: relative;
+  z-index: 1;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 40px 28px 32px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85dvh;
+  overflow-y: auto;
+  animation: modalIn 0.3s cubic-bezier(0.34, 1.15, 0.64, 1) forwards;
+}
+
+.modalOut {
+  animation: modalOut 0.22s ease forwards;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover { color: #aaa; }
+
+.closeBtn:focus-visible {
+  outline: 2px solid #555;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ── Form ────────────────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #888;
+  letter-spacing: 0.03em;
+}
+
+.input,
+.textarea {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  color: #e0e0e0;
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  transition: border-color 0.15s ease;
+  resize: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #444;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.submitBtn {
+  background: #ffffff;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 22px;
+  padding: 13px 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  margin-top: 4px;
+}
+
+.submitBtn:hover { opacity: 0.88; transform: translateY(-1px); }
+.submitBtn:active { opacity: 1; transform: translateY(0); }
+.submitBtn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* ── Status messages ─────────────────────────────────────── */
+
+.successMsg {
+  text-align: center;
+  padding: 24px 0 8px;
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.errorMsg {
+  font-size: 0.8rem;
+  color: #e05555;
+  margin: 0;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes overlayOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: translateY(0)    scale(1);    }
+  to   { opacity: 0; transform: translateY(10px) scale(0.97); }
+}
