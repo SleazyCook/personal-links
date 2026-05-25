@@ -1,0 +1,154 @@
+/* ── Collapsed state ─────────────────────────────────────── */
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.textContainer {
+  position: relative;
+  width: 100%;
+}
+
+.content {
+  max-height: 4.4em;
+  overflow: hidden;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.8em;
+  background: linear-gradient(to bottom, transparent, #0f0f0f);
+  pointer-events: none;
+}
+
+.readMoreBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: inherit;
+  color: #555;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+}
+
+.readMoreBtn:hover {
+  color: #999;
+}
+
+.readMoreBtn:focus-visible {
+  outline: 2px solid #555;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ── Modal ───────────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  animation: overlayIn 0.22s ease forwards;
+}
+
+.overlayOut {
+  animation: overlayOut 0.22s ease forwards;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.modal {
+  position: relative;
+  z-index: 1;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 40px 28px 32px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 80dvh;
+  overflow-y: auto;
+  animation: modalIn 0.3s cubic-bezier(0.34, 1.15, 0.64, 1) forwards;
+}
+
+.modalOut {
+  animation: modalOut 0.22s ease forwards;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: #aaa;
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid #555;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.modalBody {
+  font-size: 0.95rem;
+  color: #a0a0a0;
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes overlayOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: translateY(0)    scale(1);    }
+  to   { opacity: 0; transform: translateY(10px) scale(0.97); }
+}

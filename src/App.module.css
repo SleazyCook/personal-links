@@ -46,13 +46,6 @@
   text-align: center;
 }
 
-.bio {
-  font-size: 0.9rem;
-  color: #a0a0a0;
-  margin: 0 0 8px;
-  text-align: center;
-}
-
 .links {
   display: flex;
   flex-direction: column;
