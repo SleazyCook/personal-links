@@ -1,5 +1,6 @@
 // import LinkButton from "./components/LinkButton";
 import { useState } from "react";
+import { trackEvent } from "./utils/analytics";
 import IconRow from "./components/IconRow";
 import ExpandableBio from "./components/ExpandableBio";
 import ActionBar from "./components/ActionBar";
@@ -22,7 +23,7 @@ export default function App() {
       <div className={styles.card}>
         <div
           className={styles.avatar}
-          onClick={() => setAvatarOpen(true)}
+          onClick={() => { setAvatarOpen(true); trackEvent("avatar_open"); }}
           style={{ cursor: "pointer" }}
         >
           <img src={AVATAR_SRC} alt="Drew Cook" />

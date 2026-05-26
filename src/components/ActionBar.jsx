@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { trackEvent } from "../utils/analytics";
 import styles from "./ActionBar.module.css";
 
 export default function ActionBar({ buyUrl = "https://drewford.smugmug.com" }) {
@@ -7,7 +8,7 @@ export default function ActionBar({ buyUrl = "https://drewford.smugmug.com" }) {
   const [closing, setClosing] = useState(false);
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
-  const openModal = () => setModalOpen(true);
+  const openModal = () => { setModalOpen(true); trackEvent("contact_open"); };
 
   const closeModal = () => {
     setClosing(true);
@@ -41,6 +42,7 @@ export default function ActionBar({ buyUrl = "https://drewford.smugmug.com" }) {
         body: new FormData(e.target),
         headers: { Accept: "application/json" },
       });
+      if (res.ok) { trackEvent("contact_submit"); }
       setStatus(res.ok ? "success" : "error");
     } catch {
       setStatus("error");
@@ -55,6 +57,7 @@ export default function ActionBar({ buyUrl = "https://drewford.smugmug.com" }) {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.btn}
+          onClick={() => trackEvent("buy_photos_click")}
         >
           Buy Photos
         </a>

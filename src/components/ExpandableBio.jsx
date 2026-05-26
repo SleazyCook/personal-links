@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { trackEvent } from "../utils/analytics";
 import styles from "./ExpandableBio.module.css";
 
 export default function ExpandableBio({ children }) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
 
-  const openModal = () => setOpen(true);
+  const openModal = () => { setOpen(true); trackEvent("bio_expand"); };
 
   const closeModal = () => {
     setClosing(true);
