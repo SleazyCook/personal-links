@@ -78,7 +78,7 @@ async function fetchSmugMugPhotos(apiKey) {
 
     return {
       src,
-      alt: img.Caption || img.FileName || "Photo",
+      alt: img.Title || img.Caption || "Photo",
     };
   });
 }

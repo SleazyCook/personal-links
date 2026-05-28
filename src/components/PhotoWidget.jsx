@@ -105,6 +105,7 @@ export default function PhotoWidget({ images = [], interval = 4000, loading = fa
               style={{ animationDelay: `-${kbElapsedRef.current}s` }}
               loading="eager"
             />
+            {/* {console.log(deck[current].alt)} */}
           </div>
         )}
 
@@ -115,6 +116,9 @@ export default function PhotoWidget({ images = [], interval = 4000, loading = fa
             className={`${styles.image} ${KB_CLASSES[current % KB_CLASSES.length]}`}
             loading="eager"
           />
+          {deck[current].alt && (
+            <span className={styles.caption}>{deck[current].alt.toUpperCase()}</span>
+          )}
         </div>
 
         <div className={styles.overlay} aria-hidden="true" />
